@@ -1,17 +1,33 @@
+import {
+  IconButton,
+  List,
+  ListItem,
+  ListItemSecondaryAction,
+  ListItemText,
+} from "@material-ui/core";
+import { Delete } from "@material-ui/icons";
 import React from "react";
 
 function TodoList({ items, onDelete }) {
   return (
-    <div>
-      <ul>
-        {items.map((item, index) => (
-          <li key={index}>
-            {item}{" "}
-            <input type="button" value="Usuń" onClick={() => onDelete(item)} />
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      {items.length === 0 ? (
+        "Lista jest pusta"
+      ) : (
+        <List>
+          {items.map((item, index) => (
+            <ListItem key={index}>
+              <ListItemText>{item}</ListItemText>
+              <ListItemSecondaryAction>
+                <IconButton onClick={() => onDelete(item)}>
+                  <Delete />
+                </IconButton>
+              </ListItemSecondaryAction>
+            </ListItem>
+          ))}
+        </List>
+      )}
+    </>
   );
 }
 

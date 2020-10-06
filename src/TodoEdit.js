@@ -1,19 +1,20 @@
+import { Button, TextField } from "@material-ui/core";
 import React from "react";
 
 function TodoEdit({ value, onChange, onAdd }) {
   return (
     <div>
-      <input
-        type="text"
+      <TextField
+      fullWidth
+        label="Nazwa"
         value={value}
         onChange={(e) => onChange(e.target.value)}
+        variant="outlined"
+        size="small"
       />
-      <input
-        type="button"
-        value="Dodaj"
-        disabled={value.length === 0}
-        onClick={() => onAdd()}
-      />
+      <Button color="primary" variant="contained" disabled={value.length === 0} onClick={() => onAdd()}>
+        Dodaj
+      </Button>
     </div>
   );
 }

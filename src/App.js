@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import TodoEdit from "./TodoEdit";
 import TodoList from "./TodoList";
-
+import {
+  Grid,
+  Paper,
+} from "@material-ui/core";
 function App() {
   const [value, setValue] = useState("");
   const [list, setList] = useState([]);
@@ -16,10 +19,15 @@ function App() {
     setList(newList);
   };
   return (
-    <div>
-      <TodoEdit value={value} onChange={setValue} onAdd={onClickAdd} />
-      <TodoList items={list} onDelete={onClickDelete} />
-    </div>
+    <Grid container style={{marginTop: 50}}>
+      <Grid item xs={3}></Grid>
+      <Grid item xs={6}>
+        <Paper style={{padding: 8}}>
+          <TodoEdit value={value} onChange={setValue} onAdd={onClickAdd} />
+          <TodoList items={list} onDelete={onClickDelete} />
+        </Paper>
+      </Grid>
+    </Grid>
   );
 }
 
